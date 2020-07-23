@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="c20987d7-c491-44e6-b3c7-4e36772a3e9a" >
+		<http:listener-connection host="0.0.0.0" port="8083" />
+	</http:listener-config>
+	<flow name="log-in-dataweaveFlow" doc:id="e2fcd1a8-a2d7-45b9-a8df-6cef4a1750c9" >
+		<http:listener doc:name="Listener" doc:id="5b4cf62a-65cb-43ee-8b74-b63d01d3f9a1" config-ref="HTTP_Listener_config1" path="/log"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b8d4a5fb-4a11-4f8f-814c-737931c3a1fe" message="#[paylaod]"/>
+		<ee:transform doc:name="Transform Message" doc:id="7a90a6ba-b30d-4e95-b099-7188c2dc10ba" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+log(" Current Time Stamp ",now())
+++
+log("Error"," Error From Dataweave ")
+++
+log(" Employee Id Is ",payload.data[0].id)]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="44bebb68-ed0f-4985-bf98-06f9e3301373" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="dataweave-pocFlow" doc:id="20b23a47-de4e-485d-975f-3dfd18dd139e" >
+		<http:listener doc:name="Listener" doc:id="9a580382-72fd-41cd-9a17-162ac9a3dc69" config-ref="HTTP_Listener_config" path="/data"/>
+		<logger level="INFO" doc:name="Logger" doc:id="1fdb426b-6102-45e7-9274-cc8f522393a8" message="#[payload]"/>
+		<ee:transform doc:name="Transform Message" doc:id="cbab1e84-30f4-4f17-bd6e-2fa10a581a5c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload.data filter($.employee_salary>300000 and $.employee_age<60) map
+{
+	"id":$.id,
+	"emp_name":$.employee_name,
+	"emp_salary":$.employee_salary,
+	"emp_age":$.employee_age,
+}
+]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="66a334d3-1964-44ed-a53c-71fc6cc10999" message="#[payload]"/>
+		<ee:transform doc:name="Transform Message" doc:id="de497081-8cd1-4bbb-92c0-9b78750eb889" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+import dataweave::test
+output application/json
+---
+{
+    "WelcomeMessage": test::getUpdatedsting("John")
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="551b2611-020e-4c3d-8331-fb9a76c91674" />
+	</flow>
+</mule>
