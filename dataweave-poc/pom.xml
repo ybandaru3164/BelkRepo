@@ -24,6 +24,19 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.3.0</muleVersion>
+						<objectStoreV2>true</objectStoreV2>
+						<username>ykbandaru</username>
+						<password>Miracle@1</password>
+						<businessGroup>Home</businessGroup>
+						<workers>1</workers>
+						<workerType>Micro</workerType>
+						<region>us-west-1</region>
+						<environment>Sandbox</environment>
+		                <applicationName>dataweave-poc</applicationName>
+				   </cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
