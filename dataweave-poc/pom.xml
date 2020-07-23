@@ -28,9 +28,9 @@
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.3.0</muleVersion>
 						<objectStoreV2>true</objectStoreV2>
-						<username>ykbandaru</username>
-						<password>Miracle@1</password>
-						<businessGroup>Home</businessGroup>
+						<username>ybandaruk</username>
+						<password>Pa55word@1</password>
+						<businessGroup>MSS</businessGroup>
 						<workers>1</workers>
 						<workerType>Micro</workerType>
 						<region>us-west-1</region>
