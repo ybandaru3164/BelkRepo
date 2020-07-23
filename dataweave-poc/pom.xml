@@ -24,27 +24,14 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHubDeployment>
-						<uri>https://anypoint.mulesoft.com</uri>
+				   <standaloneDeployment>
+						<muleHome>C:\mule-enterprise-standalone-4.3.0</muleHome>
 						<muleVersion>4.3.0</muleVersion>
-						<objectStoreV2>true</objectStoreV2>
-						<username>ybandaruk</username>
-						<password>Pa55word@1</password>
-						<businessGroup>MSS</businessGroup>
-						<workers>1</workers>
-						<workerType>Micro</workerType>
-						<region>us-west-1</region>
-						<environment>Sandbox</environment>
-		                <applicationName>dataweave-poc</applicationName>
-				   </cloudHubDeployment>
+					</standaloneDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	
-	
-	
-
 	<dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
