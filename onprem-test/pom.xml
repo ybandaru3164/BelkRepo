@@ -3,6 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+
 	<groupId>com.mycompany</groupId>
 	<artifactId>onprem-test</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -16,7 +17,7 @@
 
 		<app.runtime>4.2.2-hf2</app.runtime>
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
-		<proejct.site.deploy.url>C:\mule-enterprise-standalone-4.3.0\apps</proejct.site.deploy.url>
+		
 	</properties>
 
 	<build>
@@ -26,16 +27,38 @@
 			<artifactId>mule-maven-plugin</artifactId>
 			<version>${mule.maven.plugin.version}</version>
 			<extensions>true</extensions>
-			<configuration>
-			  <standaloneDeployment>
-			   	<muleHome>C:\mule-enterprise-standalone-4.3.0</muleHome>
-			    <muleVersion>4.3.0</muleVersion>
-			  </standaloneDeployment>
-			</configuration>
 		   </plugin>
 		</plugins>
 	</build>
-
+	<profiles>
+		<profile>
+			 <id>standalone</id>
+			 <build>
+				 <plugins>
+					 <plugin>
+						 <groupId>org.mule.tools.maven</groupId>
+						 <artifactId>mule-maven-plugin</artifactId>
+							 <configuration>
+								 <deploymentType>standalone</deploymentType>
+								 <muleVersion>${mule.version}</muleVersion> 
+								 <muleHome>${mule.home}</muleHome> 
+								 <applicationName>${artifactId}</applicationName> 
+								 <community>${mule.runtime.community}</community> 
+							 </configuration>
+						 <executions>
+						 <execution>
+							 <id>deploy</id>
+							 <phase>deploy</phase>
+							 <goals>
+							 	<goal>deploy</goal>
+							 </goals>
+						 </execution>
+						 </executions>
+					 </plugin>
+				 </plugins>
+			 </build>
+		</profile>
+	</profiles>
 	<dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
