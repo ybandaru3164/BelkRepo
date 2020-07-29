@@ -37,7 +37,7 @@
 				 <snapshotRepository>
 				 <id>belk</id>
 				 <name>BELK Intergrations Snapshots Repository</name>
-				 <url>http://localhost:8081/service/rest/repository/browse/maven-public/</url>
+				 <url>http://localhost:8081/repository/maven-central/</url>
 				 </snapshotRepository>
 			 </distributionManagement>
 			 
