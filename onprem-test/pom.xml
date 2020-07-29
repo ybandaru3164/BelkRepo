@@ -42,7 +42,6 @@
 		                  <standaloneDeployment>
 		                    <muleVersion>${mule.version}</muleVersion> 
 		                    <muleHome>C:\mule-enterprise-standalone-4.3.0</muleHome> 
-		                    <applicationName>onprem-test</applicationName> 
 		                  </standaloneDeployment>
 						</configuration>
 						<executions>
