@@ -32,39 +32,31 @@
 	</build>
 	<profiles>
 		<profile>
-			 <id>standalone</id>
-			 <distributionManagement>
-				 <snapshotRepository>
-				 <id>belk</id>
-				 <name>NexusSampleRepo</name>
-				 <url>http://localhost:8081/repository/NexusSampleRepo/</url>
-				 </snapshotRepository>
-			 </distributionManagement>
-			 
-			 <build>
-				 <plugins>
-					 <plugin>
-						 <groupId>org.mule.tools.maven</groupId>
-						 <artifactId>mule-maven-plugin</artifactId>
-							 <configuration>
-								 <deploymentType>standalone</deploymentType>
-								 <muleVersion>${mule.version}</muleVersion> 
-								 <muleHome>${mule.home}</muleHome> 
-								 <applicationName>${project.artifactId}</applicationName> 
-								 <community>${mule.runtime.community}</community> 
-							 </configuration>
-						 <executions>
-						 <execution>
-							 <id>deploy</id>
-							 <phase>deploy</phase>
-							 <goals>
-							 	<goal>deploy</goal>
-							 </goals>
-						 </execution>
-						 </executions>
-					 </plugin>
-				 </plugins>
-			 </build>
+			<id>standalone</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.mule.tools.maven</groupId>
+						<artifactId>mule-maven-plugin</artifactId>
+						<configuration>
+		                  <standaloneDeployment>
+		                    <muleVersion>${mule.version}</muleVersion> 
+		                    <muleHome>${mule.home}</muleHome> 
+		                    <applicationName>${artifactId}</applicationName> 
+		                  </standaloneDeployment>
+						</configuration>
+						<executions>
+							<execution>
+								<id>deploy</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 	<dependencies>
@@ -98,14 +90,10 @@
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>mulesoft-releases</id>
-            <name>mulesoft release repository</name>
-            <layout>default</layout>
-            <url>https://repository.mulesoft.org/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+           <id>deploymentRepo</id>
+			<url>https://repository.mulesoft.ord/nexus/content/repositories/public</url>
         </pluginRepository>
     </pluginRepositories>
+
 
 </project>
