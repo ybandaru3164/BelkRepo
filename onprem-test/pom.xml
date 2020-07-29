@@ -37,7 +37,7 @@
 				<plugins>
 					<plugin>
 						<groupId>org.mule.tools.maven</groupId>
-						<artifactId>${project.artifactId}</artifactId>
+						<artifactId>mule-maven-plugin</artifactId>
 						<configuration>
 		                  <standaloneDeployment>
 		                    <muleVersion>${mule.version}</muleVersion> 
