@@ -33,14 +33,6 @@
 	<profiles>
 		<profile>
 			 <id>standalone</id>
-			 <distributionManagement>
-				<repository>
-		            <id>mulesoft-releases</id>
-		            <name>MuleSoft Releases Repository</name>
-		            <url>https://repository.mulesoft.org/releases/</url>
-		            <layout>default</layout>
-		        </repository>
-			</distributionManagement>
 			 <build>
 				 <plugins>
 					 <plugin>
@@ -50,7 +42,7 @@
 								 <deploymentType>standalone</deploymentType>
 								 <muleVersion>${mule.version}</muleVersion> 
 								 <muleHome>${mule.home}</muleHome> 
-								 <applicationName>${artifactId}</applicationName> 
+								 <applicationName>${project.artifactId}</applicationName> 
 								 <community>${mule.runtime.community}</community> 
 							 </configuration>
 						 <executions>
