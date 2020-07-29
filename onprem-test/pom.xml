@@ -41,8 +41,8 @@
 						<configuration>
 		                  <standaloneDeployment>
 		                    <muleVersion>${mule.version}</muleVersion> 
-		                    <muleHome>${mule.home}</muleHome> 
-		                    <applicationName>${artifactId}</applicationName> 
+		                    <muleHome>C:\mule-enterprise-standalone-4.3.0</muleHome> 
+		                    <applicationName>${project.artifactId}</applicationName> 
 		                  </standaloneDeployment>
 						</configuration>
 						<executions>
