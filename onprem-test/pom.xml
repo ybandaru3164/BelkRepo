@@ -33,6 +33,14 @@
 	<profiles>
 		<profile>
 			 <id>standalone</id>
+			 <distributionManagement>
+				<repository>
+		            <id>mulesoft-releases</id>
+		            <name>MuleSoft Releases Repository</name>
+		            <url>https://repository.mulesoft.org/releases/</url>
+		            <layout>default</layout>
+		        </repository>
+			</distributionManagement>
 			 <build>
 				 <plugins>
 					 <plugin>
