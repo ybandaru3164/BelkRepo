@@ -88,12 +88,16 @@
             <layout>default</layout>
         </repository>
     </repositories>
-    <pluginRepositories>
+    
+   <pluginRepositories>
         <pluginRepository>
-           <id>deploymentRepo</id>
-			<url>https://repository.mulesoft.ord/nexus/content/repositories/public</url>
+            <id>mulesoft-releases</id>
+            <name>mulesoft release repository</name>
+            <layout>default</layout>
+            <url>https://repository.mulesoft.org/releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </pluginRepository>
-    </pluginRepositories>
-
-
+    </pluginRepositories> 
 </project>
