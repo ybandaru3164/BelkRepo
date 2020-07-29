@@ -20,16 +20,7 @@
 		
 	</properties>
 
-	<build>
-		<plugins>
-		   <plugin>
-			<groupId>org.mule.tools.maven</groupId>
-			<artifactId>mule-maven-plugin</artifactId>
-			<version>${mule.maven.plugin.version}</version>
-			<extensions>true</extensions>
-		   </plugin>
-		</plugins>
-	</build>
+	
 	<profiles>
 		<profile>
 			<id>standalone</id>
@@ -41,7 +32,8 @@
 						<configuration>
 		                  <standaloneDeployment>
 		                    <muleVersion>${mule.version}</muleVersion> 
-		                    <muleHome>C:\mule-enterprise-standalone-4.3.0</muleHome> 
+		                    <muleHome>${mule.home}</muleHome> 
+		                    <applicationName>${project.artifactId}</applicationName>
 		                  </standaloneDeployment>
 						</configuration>
 						<executions>
